@@ -1,11 +1,11 @@
 # Shell Scripting 
 
-Os _scripts_ são muito utilizados quando temos uma tarefa que precisa ser executada várias vezes ao invés de digitarmos os comandos a cada vez. Podemos consolidar em um script e somente executarmos esse script, proporcionando uma automação de tarefas.
+Os _scripts_ são muito utilizados quando temos uma tarefa que precisa ser executada várias vezes ao invés de digitarmos os mesmos comandos a cada vez. Podemos consolidar em um script e somente executarmos esse script, proporcionando uma automação de tarefas.
 
-A pimeira linha do script, __*#!/bin/bash*__, tem como finalidade incidar qual será o interpretador dos comandos presentes no script.
+A pimeira linha do script, __*#!/bin/bash*__, tem como finalidade inicidar qual será o interpretador dos comandos presentes no script.
 
 
-###  Pegando parâmetros passados pelo usuário
+##  Pegando parâmetros passados pelo usuário
 
 Para que seja possível pegar o conteúdo do **primeiro parâmetro** devemos referenciá-lo com o número `1` no nosso script, sendo precedido do símbolo `$` ficando `$1`
 
@@ -15,9 +15,9 @@ Para que seja possível pegar o conteúdo do **primeiro parâmetro** devemos ref
         convert ~/Pictures/$1.jpg ~/Pictures/$1.png
 ```
 
-### Utilizando laço de repetição
+## Utilizando laço de repetição
 
-O símbolo `$@` é utilizado para referenciar todos os parâmetros passados por um usuário para nosso script, sem que seja necessário conhecer a quantidade de parâmtros que serão passados.
+O símbolo `$@` é utilizado para referenciar todos os parâmetros passados por um usuário para nosso script, sem que seja necessário conhecer a quantidade de parâmetros que serão passados.
 
 ```
         #! /bin/bash
@@ -32,7 +32,7 @@ O símbolo `$@` é utilizado para referenciar todos os parâmetros passados por 
 
 Ao criar um laço de repetição estamos pegando cada parâmetro passado pelo usuário e armazenando na variável, enquanto tivermos um parâmetro na variável a linha de conversão será executada.
 
-###  Convertendo automaticamente todos os arquivos
+##  Convertendo automaticamente todos os arquivos
 
 
     ```
@@ -56,6 +56,7 @@ Ao criar um laço de repetição estamos pegando cada parâmetro passado pelo us
 ## Variaveis
 
 As variáveis são por padrão globais podendo assim ser acessadas em qualquer trecho do nosso script, mesmo que ela se encontre dentro de uma função. 
+
         ```
         converte(){
         imagem="minha_imagem.jpg"
