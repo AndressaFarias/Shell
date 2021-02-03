@@ -1,0 +1,59 @@
+version: "3"
+services:
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+  general:
+    build:
+      dockerfile: general.dockerfile
+      args:
+        - BUILD_TAG=${BUILD_TAG}
+    environment :
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      ADDRESS: <IP>
+      PORT: 3010
+      NODE_ENV: production
+    image: "nomeImagem:${BUILD_TAG}"
+    container_name: nomeContainer
+    ports:
+      - "3010:3010"
+    depends_on:
+      - redis
+  business-rules:
+    build:
+      context: ../context/
+      dockerfile: business-rules.dockerfile
+      args:
+        - BUILD_TAG=${BUILD_TAG}
+    environment :
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      ADDRESS: <IP>
+      NODE_ORACLEDB_USER: user
+      NODE_ORACLEDB_PASSWORD: senha
+      NODE_ORACLEDB_HOST: <IP>
+      NODE_ORACLEDB_SID: <sid>
+      PORT: 3020
+      NODE_ENV: production
+    image: "image:${BUILD_TAG}"
+    container_name: nomeContainer
+    ports:
+      - "3020:3020"
+    depends_on:
+      - redis
+  front:
+    build:
+      context: ../context/
+      dockerfile: front.dockerfile #Dockerfile
+      args:
+        - BUILD_TAG=${BUILD_TAG}
+    environment :
+      ADDRESS: <IP>
+      PORT: 8080
+    image: "nomeImage:${BUILD_TAG}"
+    container_name: container
+    ports:
+      - "8080:8080"
