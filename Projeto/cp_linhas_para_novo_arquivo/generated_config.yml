@@ -1,0 +1,6 @@
+#!/bin/bash
+# Autor: Andressa IdalgoIvan Moretto
+# Data: 26/05/2020
+
+let linhas=`df -h|wc -l`-1
+df -h|tail -$linhas|sed 's/%//'|sed 's/G//g'|

@@ -1,0 +1,6 @@
+#! /bin/bash
+
+echo "START"
+
+# cat origem/config.yaml | sed -n '3,10p' > ./NOVOARQUIVO.yaml
+cp origem/config.yaml ./generated_config.yml
